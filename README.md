@@ -1,2 +1,2 @@
 # lifeForHomeless
-SIT 719 Project
+SIT725 Project
