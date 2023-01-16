@@ -1,2 +1,3 @@
-# lifeForHomeless
+# LifeForHomeless
+
 SIT725 Project
