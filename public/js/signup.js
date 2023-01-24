@@ -1,3 +1,12 @@
+/********************************************
+Revision History
+
+Version       Name          Date            Description 
+1.0         Navin Raaj    24/01/2023      
+
+*********************************************/
+
+
 function text(x)
 {
     if (x == 0) document.getElementById("mycode").style.display = "none";
@@ -5,8 +14,6 @@ function text(x)
    
     return;
 }
-
-
       const loginText = document.querySelector(".title-text .login");
       const loginForm = document.querySelector("form.login");
       const loginBtn = document.querySelector("label.login");
@@ -24,10 +31,6 @@ function text(x)
         signupBtn.click();
         return false;
       });
-    
-
-
-
 // $document.ready(function()
 // {
 //     $('#nopass').click(function()
@@ -50,7 +53,6 @@ var address = document.forms.myform.Address.value;
 var phone =	document.forms.myform.contact.value;
 var regPhone=/^\d{10}$/;
 
- 
 
 if (name==null || name==""){  
   window.alert("Please Enter your Name");
