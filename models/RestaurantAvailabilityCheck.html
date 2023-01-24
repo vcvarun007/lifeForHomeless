@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg==" crossorigin="anonymous" />
+    <style>
+      /* Add a background image to the page */
+      body {
+        background-image: url("../public/images/bg.jpg");
+        background-size: cover;
+      }
+
+      /* Center the table on the page */
+      .table-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Add some padding and border to the table */
+      .table-container table {
+        padding: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 1rem;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Add some animations to the table */
+      .table-container table {
+        animation: fadeIn 1s ease-in-out;
+      }
+      .table-container th {
+        animation: fadeInLeft 1s ease-in-out;
+      }
+      .table-container td {
+        animation: fadeInRight 1s ease-in-out;
+      }
+
+      /* Make the table responsive */
+      @media (max-width: 768px) {
+        .table-container {
+          width: 90%;
+        }
+      }
+
+      /* Define the animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-10px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes fadeInRight {
+        from { opacity: 0; transform: translateX(10px);
+        }}
+    </style
+    <body>
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Feed Quantity</th>
+            <th>Food Choice</th>
+            <th>Point of Contact (P.O.C.)</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>200</td>
+            <td>Vegetarian</td>
+            <td>John Doe</td>
+            <td>New York</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>150</td>
+            <td>Non-Vegetarian</td>
+            <td>Jane Smith</td>
+            <td>Los Angeles</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>250</td>
+            <td>Vegan</td>
+            <td>Mike Johnson</td>
+            <td>Chicago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
