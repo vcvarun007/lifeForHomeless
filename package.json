@@ -1,0 +1,34 @@
+{
+  "name": "lifeForHomeless",
+  "description": "lifeForHomeless",
+  "version": "1.0.0",
+  "main": "LFHRoutes.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "start": "node ./routes/LFHRoutes.js"
+  },
+  "author": "Aman, Jaskirat, Navin, Varun",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "mocha": "^10.2.0",
+    "mongodb": "^4.12.1",
+    "request": "^2.88.2",
+    "socket.io": "^4.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vcvarun007/lifeForHomeless.git"
+  },
+  "keywords": [
+    "prac4"
+  ],
+  "bugs": {
+    "url": "https://github.com/vcvarun007/lifeForHomeless.git/issues"
+  },
+  "homepage": "https://github.com/vcvarun007/lifeForHomeless.git#readme"
+}
