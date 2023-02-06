@@ -11,21 +11,54 @@ app.use(cors());
 //MongoDB Connection
 const MongoClient = require("mongodb").MongoClient;
 const uri =
-  "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/?retryWrites=true&w=majority";
+  // "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/LFH/createHPProfile";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
+const uri2 =
+  "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/LFH/updateFood";
+const client2 = new MongoClient(uri, { useNewUrlParser: true });
+
+const uri3 =
+  "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/signUp";
+const client3 = new MongoClient(uri, { useNewUrlParser: true });
 
 //create collection
 const createColllection = (collectionName) => {
   client.connect((err, db) => {
     projectCollection = client.db().collection(collectionName);
     if (!err) {
-      console.log("MongoDB Connected");
+      console.log("MongoDB Connected to client 1");
     } else {
       console.log("DB Error: ", err);
       process.exit(1);
     }
   });
 };
+
+// const createColllection2 = (collectionName) => {
+//   client2.connect((err, db) => {
+//     projectCollection = client.db().collection(collectionName);
+//     if (!err) {
+//       console.log("MongoDB Connected to client 1");
+//     } else {
+//       console.log("DB Error: ", err);
+//       process.exit(1);
+//     }
+//   });
+// };
+
+// const createColllection3 = (collectionName) => {
+//   client3.connect((err, db) => {
+//     projectCollection = client.db().collection(collectionName);
+//     if (!err) {
+//       console.log("MongoDB Connected");
+//     } else {
+//       console.log("DB Error: ", err);
+//       process.exit(1);
+//     }
+//   });
+// };
 
 //insert project
 const insertProjects = (project, callback) => {
@@ -55,6 +88,44 @@ const getProjects = (callback) => {
 };
 
 //Create HP Profile
+app.post("/views/CreateHPProfile.html", (req, res) => {
+  console.log("Added new Homeless person", req.body);
+  // var newProject = req.body;
+  // insertProjects(newProject, (err, result) => {
+  //   if (err) {
+  //     res.json({ statusCode: 400, message: err });
+  //   } else {
+  //     res.json({
+  //       statusCode: 200,
+  //       message: "Project Successfully added",
+  //       data: result,
+  //     });
+  //   }
+  // });
+
+  // let fname = req.body.fname;
+  // let lname = req.body.lname;
+  // let age = req.body.age;
+  var newProject = req.body;
+  insertProjects(newProject, (err, result) => {
+    if (err) {
+      res.json({ statusCode: 400, message: err });
+    } else {
+      // res.json({
+      //   statusCode: 200,
+      //   message: "Project Successfully added",
+      //   data: result,
+      // });
+      console.log(
+        'statusCode: 200, message: "Profile Successfully created",',
+        "data:",
+        result
+      );
+      res.redirect("../views/CreateHPProfile.html");
+    }
+  });
+});
+
 app.post("/views/CreateHPProfile.html", (req, res) => {
   console.log("Added new Homeless person", req.body);
   // var newProject = req.body;
