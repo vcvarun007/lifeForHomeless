@@ -17,6 +17,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "mocha": "^10.2.0",
     "mongodb": "^4.13.0",
+    "mongoose": "^6.9.1",
     "request": "^2.88.2",
     "socket.io": "^4.5.4"
   },

@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const cors = require("cors");
+const mongoose = require("mongoose");
+const bodyPraser = require("bodyPraser");
+
 
 app.use(express.static("public"));
 app.use(express.json());
