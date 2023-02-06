@@ -51,6 +51,11 @@ const createHPProfile = (profiles) => {
   });
 };
 
+function submitHPProfile() {
+  alert("Profile created!");
+  console.log("Profile created!");
+}
+
 $(document).ready(function () {
   console.log("CreateHPProfileJS - JQuery running on doc ready!");
   createHPProfile(homelessPeople);

@@ -32,37 +32,76 @@ const insertProjects = (project, callback) => {
   projectCollection.insert(project, callback);
 };
 
-//post project
-app.post("/api/projects", (req, res) => {
-  console.log("New Project added", req.body);
-  var newProject = req.body;
-  insertProjects(newProject, (err, result) => {
-    if (err) {
-      res.json({ statusCode: 400, message: err });
-    } else {
-      res.json({
-        statusCode: 200,
-        message: "Project Successfully added",
-        data: result,
-      });
-    }
-  });
-});
+// //post project
+// app.post("/api/projects", (req, res) => {
+//   console.log("New Project added", req.body);
+//   var newProject = req.body;
+//   insertProjects(newProject, (err, result) => {
+//     if (err) {
+//       res.json({ statusCode: 400, message: err });
+//     } else {
+//       res.json({
+//         statusCode: 200,
+//         message: "Project Successfully added",
+//         data: result,
+//       });
+//     }
+//   });
+// });
 
 // get project
 const getProjects = (callback) => {
   projectCollection.find({}).toArray(callback);
 };
 
-app.get("/api/projects", (req, res) => {
-  getProjects((err, result) => {
+//Create HP Profile
+app.post("/views/CreateHPProfile.html", (req, res) => {
+  console.log("Added new Homeless person", req.body);
+  // var newProject = req.body;
+  // insertProjects(newProject, (err, result) => {
+  //   if (err) {
+  //     res.json({ statusCode: 400, message: err });
+  //   } else {
+  //     res.json({
+  //       statusCode: 200,
+  //       message: "Project Successfully added",
+  //       data: result,
+  //     });
+  //   }
+  // });
+
+  // let fname = req.body.fname;
+  // let lname = req.body.lname;
+  // let age = req.body.age;
+  var newProject = req.body;
+  insertProjects(newProject, (err, result) => {
     if (err) {
       res.json({ statusCode: 400, message: err });
     } else {
-      res.json({ statusCode: 200, message: "Success", data: result });
+      // res.json({
+      //   statusCode: 200,
+      //   message: "Project Successfully added",
+      //   data: result,
+      // });
+      console.log(
+        'statusCode: 200, message: "Profile Successfully created",',
+        "data:",
+        result
+      );
+      res.redirect("../views/CreateHPProfile.html");
     }
   });
 });
+
+// app.get("/api/projects", (req, res) => {
+//   getProjects((err, result) => {
+//     if (err) {
+//       res.json({ statusCode: 400, message: err });
+//     } else {
+//       res.json({ statusCode: 200, message: "Success", data: result });
+//     }
+//   });
+// });
 
 app.get("/", (req, res) => {
   res.render("../public/index.html");
@@ -88,4 +127,6 @@ const addNumbers = (number1, number2) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
   createColllection("createHPProfile");
+  createColllection("updateFood");
+  createColllection("singUp");
 });

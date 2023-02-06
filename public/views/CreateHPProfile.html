@@ -10,6 +10,7 @@ Version       Name              Date            Description
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create HP Profile</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -33,7 +34,6 @@ Version       Name              Date            Description
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="../js/CreateHPprofile.js"></script>
   </head>
   <body>
@@ -91,7 +91,7 @@ Version       Name              Date            Description
           <div class="form-group">
             <input
               class="form-control"
-              type="email"
+              type="text"
               name="fname"
               placeholder="First Name"
             />
@@ -99,14 +99,14 @@ Version       Name              Date            Description
           <div class="form-group">
             <input
               class="form-control"
-              type="email"
+              type="text"
               name="lname"
               placeholder="Last Name"
             />
           </div>
-          <div>
+          <!-- <div>
             <input class="form-control" type="file" id="formFile" />
-          </div>
+          </div> -->
           <div class="form-group">
             <input
               class="form-control"
@@ -141,11 +141,24 @@ Version       Name              Date            Description
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" type="submit">Create</button>
+            <button
+              class="btn btn-primary"
+              type="submit"
+              id="submitHPProfile"
+              onclick="submitHPProfile()"
+            >
+              Create
+            </button>
           </div>
         </form>
       </div>
     </div>
     <div id="hpp-display-section"></div>
+    <script>
+      function submitHPProfile() {
+        alert("Profile created!");
+        console.log("Profile created!");
+      }
+    </script>
   </body>
 </html>
