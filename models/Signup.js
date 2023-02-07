@@ -11,5 +11,6 @@ const SignupSchema = new Schema({
   rname: String,
 });
 
+
 const signupinfo = mongoose.model("signupinfo", SignupSchema);
 module.exports = signupinfo;
