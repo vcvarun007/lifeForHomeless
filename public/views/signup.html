@@ -1,10 +1,10 @@
-<!--********************************************
+<!-- /********************************************
 Revision History
 
 Version       Name          Date            Description 
-1.0         Aman Das    24/01/2023      
+1.0         Aman Das    01/02/2023      
 
-*********************************************-->
+*********************************************/ -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -84,6 +84,7 @@ Version       Name          Date            Description
             class="signup"
             name="myform"
             method="post"
+           
             onsubmit="return validatedonor()"
           >
             <div class="field">
@@ -130,10 +131,10 @@ Version       Name          Date            Description
               <input
                 class="form-check-input"
                 type="radio"
-                name="flexRadioDefault"
+                name="type"
                 id="donor"
-                value="donor"
-                onclick="text(0)"
+                value="1"
+                onclick="tex(1)"
                 checked
               />
               <label class="form-check-label" for="donor"> Donor </label>
@@ -142,10 +143,24 @@ Version       Name          Date            Description
               <input
                 class="form-check-input"
                 type="radio"
-                name="flexRadioDefault"
+                name="type"
+                id="volunteer"
+                value="3"
+                onclick="texti(3)"
+              />
+              <label class="form-check-label" for="volunteer">
+                volunteer
+              </label>
+            </div>
+            
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="type"
                 id="restaurant"
-                value="restaurant"
-                onclick="text(1)"
+                value="2"
+                onclick="text(2)"
               />
               <label class="form-check-label" for="restaurant">
                 Restaurant

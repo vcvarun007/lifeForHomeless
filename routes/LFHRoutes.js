@@ -5,6 +5,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const HPProfileData = require("../models/CreateHPProfileModel");
+const signupinfo = require("../models/Signup");
+const logininfo = require("../models/Signup");
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -66,3 +68,60 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
   createColllection("createHPProfile");
 });
+
+
+//**********************signup***********************/
+app.post("/views/signup.html", (req, res) => {
+  const details = new signupinfo({
+    name: req.body.name,
+    email: req.body.email,
+    contact:req.body.contact,
+    Address: req.body.Address,
+    password: req.body.password,
+    type: req.body.type,
+    rname: req.body.rname,
+  });
+
+  details.save((error, signuppage) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      console.log(signuppage);
+      res.send("successfully submitted");
+ 
+    }
+  });
+});
+
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+//   createColllection("Signup");
+// });
+
+
+
+
+
+
+//**************************login*****************************/
+app.post("/views/signup.html", (req, res) => {
+  const details = new logininfo({
+    name: req.body.name,
+    email: req.body.email,
+    
+  });
+
+  details.save((error, loginpage) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      console.log(loginpage);
+      res.send("successfully submitted");
+     
+    }
+  });
+});
+
+
+
+

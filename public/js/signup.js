@@ -2,14 +2,21 @@
 Revision History
 
 Version       Name          Date            Description 
-1.0         Aman Das    24/01/2023      
+1.0         Aman Das    01/02/2023      
 
 *********************************************/
 
 
 function text(x)
 {
-    if (x == 0) document.getElementById("mycode").style.display = "none";
+    if (x == 1) document.getElementById("mycode").style.display = "none";
+    else document.getElementById("mycode").style.display ="block";
+   
+    return;
+}
+function texti(y)
+{
+    if (y == 3) document.getElementById("mycode").style.display = "none";
     else document.getElementById("mycode").style.display ="block";
    
     return;
