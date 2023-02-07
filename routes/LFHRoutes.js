@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const HPProfileData = require("../models/CreateHPProfileModel");
 
+const signupinfo = require("../models/Signup")
+const logininfo = require("../models/Signup")
+
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.json());
