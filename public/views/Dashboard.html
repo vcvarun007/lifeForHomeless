@@ -3,6 +3,22 @@
   <link rel="stylesheet" href="../css/Dashboard.css" />
 
   <head>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg=="
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+  />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -29,6 +45,52 @@
   </head>
 
   <body class="sticky-footer bg-dark" id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Life for Homeless</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../views/Dashboard.html">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../views/Displayfoods.html">
+              <i class="fas fa-utensils"></i> Food Availability
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../views/CreateHPProfile.html">
+              <i class="fas fa-user-plus"></i> Create HP Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="../views/RestaurantAvailabilityCheck.html"
+            >
+              <i class="fas fa-check-square"></i> Restaurant Availability Check
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../views/signup.html">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="content-wrapper">
       <div class="container-fluid">
         <!-- Breadcrumbs-->
