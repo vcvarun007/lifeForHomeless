@@ -92,6 +92,18 @@ app.post("/views/UpdateFood.html", (req, res) => {
   });
 });
 
+app.get('/',(req,res) => {
+  projectModel.getProjects((err,result) => {
+      if(err) {
+          res.json({statusCode: 400, message: err})
+      }
+      else {
+          res.json({statusCode: 200, message:"Success", data: result})
+      }
+  })
+})
+
+
 //**********************signup***********************/
 app.post("/views/signup.html", (req, res) => {
   const details = new signupinfo({
@@ -103,6 +115,17 @@ app.post("/views/signup.html", (req, res) => {
     type: req.body.type,
     rname: req.body.rname,
   });
+
+  app.get('/api/projects',(req,res) => {
+    getProjects((err,result) => {
+    if(err) {
+    res.json({statusCode: 400, message: err})
+    }
+    else {
+     res.json({statusCode: 200, message:"Success", data: result})
+    }
+    })
+    })
 
   details.save((error, signuppage) => {
     if (error) {
