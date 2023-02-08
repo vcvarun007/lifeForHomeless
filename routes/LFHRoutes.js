@@ -75,14 +75,14 @@ app.listen(port, () => {
 
 //**************************UpdateFood*****************************/
 app.post("/views/UpdateFood.html", (req, res) => {
-  const details = new UpdateFoodData({
+  const UpdateFood = new UpdateFoodData({
     name: req.body.name,
     contact: req.body.contact,
     type: req.body.type,
     Quantity: req.body.Quantity,    
   });
 
-  fooddata.save((error, nextpage) => {
+  UpdateFood.save((error, nextpage) => {
     if (error) {
       res.status(500).send(error);
     } else {
