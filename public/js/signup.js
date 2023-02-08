@@ -7,6 +7,7 @@ Version       Name          Date            Description
 *********************************************/
 
 
+
 function text(x)
 {
     if (x == 1) document.getElementById("mycode").style.display = "none";

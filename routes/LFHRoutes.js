@@ -5,6 +5,7 @@ Version       Name          Date            Description
 
 
 1.0         Navin Raaj    08/02/2023      Connected UpdateFood page with Database
+1.0         Navin Raaj    08/02/2023      Added Socket
 ***********************************************/
 
 const express = require("express");
@@ -13,19 +14,32 @@ const port = 3000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const HPProfileData = require("../models/CreateHPProfileModel");
-
-const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
-
-
-const signupinfo = require("../models/Signup")
-const logininfo = require("../models/Signup")
-
+let projectCollection; 
+let http = require('http').createServer(app);
+let io = require('socket.io')(http);
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+const HPProfileData = require("../models/CreateHPProfileModel");
+const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
+const signupinfo = require("../models/Signup")
+const logininfo = require("../models/Signup")
+
+
+//2.0 Socket Connection
+
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+    setInterval(()=>{
+      socket.emit('number', parseInt(Math.random()*10));
+    }, 1000);
+  });
+
 
 //MongoDB Connection
 const MongoClient = require("mongodb").MongoClient;
@@ -76,7 +90,7 @@ app.get("/", (req, res) => {
   res.render("../public/index.html");
 });
 
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Listening on port ${port}`);
   createColllection("createHPProfile");
 });
@@ -159,4 +173,3 @@ app.post("/views/signup.html", (req, res) => {
     }
   });
 });
-
