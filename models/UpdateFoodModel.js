@@ -6,6 +6,7 @@ const UpdateFoodSchema = new Schema({
     contact: "Number",
     type: "String",
     Quantity: "Number",
+    Location: "String",
   });
   
 const UpdateFoodData = mongoose.model("UpdateFoodData",UpdateFoodSchema);

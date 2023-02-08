@@ -79,7 +79,9 @@ app.post("/views/UpdateFood.html", (req, res) => {
     name: req.body.name,
     contact: req.body.contact,
     type: req.body.type,
-    Quantity: req.body.Quantity,    
+    Quantity: req.body.Quantity, 
+    Location: req.body.Location,   
+      
   });
 
   UpdateFood.save((error, nextpage) => {
