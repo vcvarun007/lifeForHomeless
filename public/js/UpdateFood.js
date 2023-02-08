@@ -1,4 +1,4 @@
-const homelessPeople = [
+/*const homelessPeople = [
     {
         rest_id: "1",
         rname: "Josh",
@@ -24,4 +24,4 @@ const homelessPeople = [
         location: "University of Melbourne",
     },
   ];
-  
+  */
