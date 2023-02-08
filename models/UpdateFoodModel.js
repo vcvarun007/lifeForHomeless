@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const UpdateFoodSchema = new mongoose.Schema({
-    rest_id: "String",
-    rname: "String",
-    rnumber: "Number",
-    food_type: "String",
-    qty: "Number",
-    location: "String",
+const UpdateFoodSchema = new Schema({
+    hpp_id: "ObjectId",
+    name: "String",
+    contact: "Number",
+    type: "String",
+    Quantity: "Number",
   });
   
-const UpdateFoodData = mongoose.model("UpdateFoodData", UpdateFoodSchema);
+const UpdateFoodData = mongoose.model("UpdateFoodData",UpdateFoodSchema);
 module.exports = UpdateFoodData;

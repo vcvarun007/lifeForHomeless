@@ -23,12 +23,6 @@ Version       Name          Date            Description
     />
     <script src="../js/UpdateFood.js"></script>
     <style>
-      /* Add a background image to the page */
-      body {
-        /* background-image: url("https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"); */
-        background-image: url("../public/images/bgg.jpeg");
-        background-size: cover;
-      }
 
       /* Center the form on the page */
       .form-container {
@@ -65,11 +59,11 @@ Version       Name          Date            Description
               type="text"
               class="form-control"
               id="name"
+              name="name"
               placeholder="Repreasentive Name"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please enter Representative Name.</div>
+            
           </div>
 
           <div class="form-group col-md-6">
@@ -78,16 +72,16 @@ Version       Name          Date            Description
               type="text"
               class="form-control"
               id="contact"
+              name="contact"
               placeholder="Contact Number"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Please enter Representative Contact Number.</div>
+           
           </div>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Type</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="type" name="type">
               <option>Vegetarian</option>
               <option>Non Vegetarian</option>
             </select>
@@ -98,13 +92,14 @@ Version       Name          Date            Description
             type="number"
             class="form-control"
             id="Quantity"
+            name="Quantity"
             min="1"
             required
           />
         </div>
-
-        <div>
-          <button type="submit" class="form-control">Submit</button>
+        <div class="form-group">
+          <button
+            class="btn btn-primary" type="submit" id="UpdateFood">UpdateFood</button>
         </div>
       </form>
     </div>

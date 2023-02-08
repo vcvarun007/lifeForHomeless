@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const HPProfileData = require("../models/CreateHPProfileModel");
 
+const UpdateFoodData = require("../models/UpdateFoodModel");
+
+
 const signupinfo = require("../models/Signup")
 const logininfo = require("../models/Signup")
 
@@ -70,6 +73,24 @@ app.listen(port, () => {
   createColllection("createHPProfile");
 });
 
+//**************************UpdateFood*****************************/
+app.post("/views/UpdateFood.html", (req, res) => {
+  const details = new UpdateFoodData({
+    name: req.body.name,
+    contact: req.body.contact,
+    type: req.body.type,
+    Quantity: req.body.Quantity,    
+  });
+
+  fooddata.save((error, nextpage) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      console.log(nextpage);
+      res.send("successfully submitted");
+    }
+  });
+});
 
 //**********************signup***********************/
 app.post("/views/signup.html", (req, res) => {
@@ -94,22 +115,11 @@ app.post("/views/signup.html", (req, res) => {
   });
 });
 
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-//   createColllection("Signup");
-// });
-
-
-
-
-
-
 //**************************login*****************************/
 app.post("/views/signup.html", (req, res) => {
   const details = new logininfo({
     name: req.body.name,
     email: req.body.email,
-    
   });
 
   details.save((error, loginpage) => {
@@ -122,7 +132,4 @@ app.post("/views/signup.html", (req, res) => {
     }
   });
 });
-
-
-
 
