@@ -1,0 +1,23 @@
+
+      /* Center the form on the page */
+      .form-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Add some padding and border to the form */
+      .form-container form {
+        padding: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 1rem;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Make the form responsive */
+      @media (max-width: 768px) {
+        .form-container {
+          width: 90%;
+        }
+      }
