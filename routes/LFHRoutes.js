@@ -1,3 +1,12 @@
+/************************************************
+Revision History
+
+Version       Name          Date            Description 
+
+
+1.0         Navin Raaj    08/02/2023      Connected UpdateFood page with Database
+***********************************************/
+
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -6,7 +15,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const HPProfileData = require("../models/CreateHPProfileModel");
 
-const UpdateFoodData = require("../models/UpdateFoodModel");
+const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
 
 
 const signupinfo = require("../models/Signup")
@@ -20,8 +29,7 @@ app.use(cors());
 
 //MongoDB Connection
 const MongoClient = require("mongodb").MongoClient;
-const uri =
-  "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/LifeForHomeless?retryWrites=true&w=majority";
+const uri ="mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/LifeForHomeless?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -73,7 +81,13 @@ app.listen(port, () => {
   createColllection("createHPProfile");
 });
 
-//**************************UpdateFood*****************************/
+
+/*********************************************************** //1.0
+Author              :Navin Raaj M
+Last Modified Date  :08-02-2023
+Description         :The Below code is used to get the input data from the UI and send it to the server
+**********************************************************/
+
 app.post("/views/UpdateFood.html", (req, res) => {
   const UpdateFood = new UpdateFoodData({
     name: req.body.name,
@@ -81,7 +95,6 @@ app.post("/views/UpdateFood.html", (req, res) => {
     type: req.body.type,
     Quantity: req.body.Quantity, 
     Location: req.body.Location,   
-      
   });
 
   UpdateFood.save((error, nextpage) => {
@@ -94,7 +107,14 @@ app.post("/views/UpdateFood.html", (req, res) => {
   });
 });
 
-//**********************signup***********************/
+
+
+/***********************************************************
+Author              :
+Last Modified Date  :-02-2023
+Description         :
+**********************************************************/
+
 app.post("/views/signup.html", (req, res) => {
   const details = new signupinfo({
     name: req.body.name,
@@ -105,17 +125,6 @@ app.post("/views/signup.html", (req, res) => {
     type: req.body.type,
     rname: req.body.rname,
   });
-
-  app.get('/api/projects',(req,res) => {
-    getProjects((err,result) => {
-    if(err) {
-    res.json({statusCode: 400, message: err})
-    }
-    else {
-     res.json({statusCode: 200, message:"Success", data: result})
-    }
-    })
-    })
 
   details.save((error, signuppage) => {
     if (error) {
@@ -128,7 +137,12 @@ app.post("/views/signup.html", (req, res) => {
   });
 });
 
-//**************************login*****************************/
+/***********************************************************
+Author              :
+Last Modified Date  :-02-2023
+Description         :
+**********************************************************/
+
 app.post("/views/signup.html", (req, res) => {
   const details = new logininfo({
     name: req.body.name,
