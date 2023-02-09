@@ -39,14 +39,7 @@ function texti(y)
         signupBtn.click();
         return false;
       });
-// $document.ready(function()
-// {
-//     $('#nopass').click(function()
-//     {
-//     $('#password1').show();
-//     $(this).hide();
-// });
-// });
+
 function validatedonor(){ 
   
 var name=document.forms.myform.name.value;  
@@ -79,29 +72,23 @@ if (phone == "" || !regPhone.test(phone)) {
    
     return false;
 }
-
     
-    if (address == "") {
+  if (address == "") {
     window.alert("Please enter your address.");
    
     return false;
 }
- 
 
 if(password.length<8){  
     alert("Password must be at least 8 characters long.");  
     return false;  
     } 
-
-   
-   
 }
 
 function validatelogin(){ 
 var password=document.forms.loginform.password.value;  
 
 var email=document.forms.loginform.email.value; 
-console.log(password, email);
 var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
 if (email == "" || !regEmail.test(email)) {

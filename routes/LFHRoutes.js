@@ -186,7 +186,7 @@ Last Modified Date  :-02-2023
 Description         :
 **********************************************************/
 
-app.post("/views/signup.html", (req, res) => {
+app.post("/signupUser", (req, res) => {
   const details = new signupinfo({
     name: req.body.name,
     email: req.body.email,
@@ -201,7 +201,7 @@ app.post("/views/signup.html", (req, res) => {
       res.status(500).send(error);
     } else {
       console.log(signuppage);
-      res.send("successfully submitted");
+      res.redirect('/')
     }
   });
 });
@@ -227,6 +227,7 @@ app.post('/login',(req,res) => {
             session.userid    = docs[0]._id
             session.usernname = docs[0].name
             session.email     = docs[0].email
+            session.userType  = docs[0].type
             res.redirect('/dashboard')
           }
         }
