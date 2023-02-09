@@ -43,8 +43,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../displayFoods">
-            <i class="fas fa-utensils"></i> Food Availability
+          <a class="nav-link" href="../UpdateFood">
+            <i class="fas fa-utensils"></i> Update Food
           </a>
         </li>
         <li class="nav-item">
@@ -67,32 +67,23 @@
       </ul>
     </div>
   </nav>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Food Type</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Location</th>
-            <th scope="col">UserID</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%Fooddata.forEach(UpdateFoodData => {%>
-            <tr>
-                <th scope="row"><%= UpdateFoodData._id %></th>
-                <td><%= UpdateFoodData.name %></td>
-                <td><%= UpdateFoodData.contact %></td>
-                <td><%= UpdateFoodData.type %></td>
-                <td><%= UpdateFoodData.Quantity %></td>
-                <td><%= UpdateFoodData.Location %></td>
-                <td><%= UpdateFoodData.UserID %></td>
-
-            </tr>
-        <%})%>
-        </tbody>
-      </table>
+  <div class="card-deck">
+    <% Fooddata.forEach(UpdateFoodData => { %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= UpdateFoodData.name %></h5>
+          <p class="card-text">
+            ID: <%= UpdateFoodData._id %><br>
+            Contact: <%= UpdateFoodData.contact %><br>
+            Food Type: <%= UpdateFoodData.type %><br>
+            Quantity: <%= UpdateFoodData.Quantity %><br>
+            Location: <%= UpdateFoodData.Location %><br>
+            UserID: <%= UpdateFoodData.UserID %>
+          </p>
+          <button class="btn btn-danger" onclick="deleteFoodData(<%= UpdateFoodData._id %>)">Delete</button>
+        </div>
+      </div>
+    <% }); %>
+  </div>
 </body>
 </html>
