@@ -110,22 +110,42 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/dashboard', (req, res) => {
+  if(req.session.userid == undefined) {
+    res.redirect('/')
+    return true;
+  }
   res.render("../public/views/Dashboard.html");
 })
 
 app.get('/updateFood', (req, res) => {
+  if(req.session.userid == undefined) {
+    res.redirect('/')
+    return true;
+  }
   res.render("../public/views/UpdateFood.html");
 })
 
 app.get('/displayFoods', (req, res) => {
+  if(req.session.userid == undefined) {
+    res.redirect('/')
+    return true;
+  }
   res.render("../public/views/Displayfoods.html");
 })
 
 app.get('/CreateHPProfile', (req, res) => {
+  if(req.session.userid == undefined) {
+    res.redirect('/')
+    return true;
+  }
   res.render("../public/views/CreateHPProfile.html");
 })
 
 app.get('/restaurants', (req, res) => {
+  if(req.session.userid == undefined) {
+    res.redirect('/')
+    return true;
+  }
   res.render("../public/views/RestaurantAvailabilityCheck.html");
 })
 
