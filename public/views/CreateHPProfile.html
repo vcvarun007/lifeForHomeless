@@ -1,9 +1,3 @@
-<!--**************************************************************************
-Revision History
-Version       Name              Date            Description 
-1.0           Varun Chaudhary   19/01/2023      Initial
-1.1           Varun Chaudhary   25/01/2023      Updated the new links
-***************************************************************************-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,6 +12,7 @@ Version       Name              Date            Description
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
     <!-- FONT AWESOME -->
     <link
@@ -27,6 +22,8 @@ Version       Name              Date            Description
 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../css/CreateHPProfile.css" />
+    
+    <!-- CUSTOM JS -->
     <script src="../js/CreateHPprofile.js"></script>
   </head>
   <body>
@@ -87,6 +84,8 @@ Version       Name              Date            Description
               type="text"
               name="fname"
               placeholder="First Name"
+              id="fname"
+              required
             />
           </div>
           <div class="form-group">
@@ -95,10 +94,9 @@ Version       Name              Date            Description
               type="text"
               name="lname"
               placeholder="Last Name"
+              id="lname"
+              required
             />
-          </div>
-          <div>
-            <input class="form-control" type="file" id="formFile" />
           </div>
           <div class="form-group">
             <input
@@ -107,28 +105,52 @@ Version       Name              Date            Description
               name="age"
               min="18"
               placeholder="Age"
+              id="age"
+              required
             />
           </div>
-          <div class="dropdown" id="IdDropdown">
+          <div class="dropdown">
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
-              data-bs-toggle="dropdown"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
               aria-expanded="false"
+              value="None"
             >
               ID Proof
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Passport</a></li>
-              <li><a class="dropdown-item" href="#">Driver's License</a></li>
-              <li><a class="dropdown-item" href="#">Citizen ID</a></li>
-            </ul>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Passport</a>
+              <a class="dropdown-item" href="#">Driver's License</a>
+              <a class="dropdown-item" href="#">Citizenship Certificate</a>
+              <a class="dropdown-item" href="#">Other</a>
+            </div>
           </div>
+          <input
+              class="form-control"
+              type="text"
+              name="idProof"
+              placeholder="hiddenidProof"
+              id="idProof"
+              value="None"
+              hidden
+            />
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="idNo"
+              placeholder="ID Number"
+              id="idNo"
+              required
+            />
           <div class="form-group">
             <div class="form-check">
               <label class="form-check-label"
-                ><input class="form-check-input" type="checkbox" />I hereby
-                declare that the information provided is true and
+                ><input class="form-check-input" type="checkbox" id="check" required />I
+                hereby declare that the information provided is true and
                 correct.</label
               >
             </div>
@@ -138,7 +160,6 @@ Version       Name              Date            Description
               class="btn btn-primary"
               type="submit"
               id="submitHPProfile"
-              onclick="submitHPProfile()"
             >
               Create
             </button>
@@ -148,7 +169,6 @@ Version       Name              Date            Description
     </div>
 
     <!-- BOOTSTRAP -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -159,13 +179,5 @@ Version       Name              Date            Description
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-
-    <!-- <div id="hpp-display-section"></div>
-    <script>
-      function submitHPProfile() {
-        alert("Profile created!");
-        console.log("Profile created!");
-      }
-    </script> -->
   </body>
 </html>
