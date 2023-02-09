@@ -122,7 +122,12 @@ app.get('/displayFoods', (req, res) => {
     res.redirect('/')
     return true;
   }
-  res.render("../public/views/Displayfoods.html");
+
+  UpdateFoodData.find({}, function(err, updatefooddatas) {
+    res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas
+    })
+})
+
 })
 
 app.get('/CreateHPProfile', (req, res) => {
@@ -160,6 +165,7 @@ app.post("/updateFood", (req, res) => {
     type: req.body.type,
     Quantity: req.body.Quantity,
     Location: req.body.Location,
+    UserID: req.session.Id,
   });
 
   UpdateFood.save((error, nextpage) => {
@@ -171,4 +177,6 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
+
+
 
