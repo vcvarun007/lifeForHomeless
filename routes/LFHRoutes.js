@@ -23,9 +23,11 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 var session = require('express-session');
+const dashboardController = require('../controller/dashboardController');
+const loginController = require('../controller/loginController');
 // Mapping the EJS template engine to ".html" files
 app.engine('html', require('ejs').renderFile);
-
+app.set('view engine', 'ejs');
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
 const signupinfo = require("../models/Signup")
@@ -38,7 +40,8 @@ app.use(session({
   cookie: { maxAge: oneDay },
   resave: false
 }));
-
+app.use('/dashboard', dashboardController);
+app.use('/',loginController)
 //2.0 Socket Connection
 
 io.on("connection", (socket) => {
@@ -95,13 +98,8 @@ app.post("/CreateHPProfile", (req, res) => {
 });
 //---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
-// app.get("/", (req, res) => {
-//   res.render("../public/index.html");
-// });
-
-
 app.get('/', (req, res) => {
-  res.render("../public/views/signup.html");
+  res.render("../public/index.ejs");
 })
 
 app.get('/logout', (req, res) => {
@@ -109,13 +107,7 @@ app.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
-app.get('/dashboard', (req, res) => {
-  if(req.session.userid == undefined) {
-    res.redirect('/')
-    return true;
-  }
-  res.render("../public/views/Dashboard.html");
-})
+
 
 app.get('/updateFood', (req, res) => {
   if(req.session.userid == undefined) {
@@ -180,57 +172,3 @@ app.post("/updateFood", (req, res) => {
   });
 });
 
-/***********************************************************
-Author              :
-Last Modified Date  :-02-2023
-Description         :
-**********************************************************/
-
-app.post("/signupUser", (req, res) => {
-  const details = new signupinfo({
-    name: req.body.name,
-    email: req.body.email,
-    contact: req.body.contact,
-    Address: req.body.Address,
-    password: req.body.password,
-    type: req.body.type,
-    rname: req.body.rname,
-  });
-  details.save((error, signuppage) => {
-    if (error) {
-      res.status(500).send(error);
-    } else {
-      console.log(signuppage);
-      res.redirect('/')
-    }
-  });
-});
-
-/***********************************************************
-Author              : jaskirat singh
-Last Modified Date  :-02-2023
-Description         : login code 
-**********************************************************/
-
-app.post('/login',(req,res) => {
-  var query = {"email":req.body.email,"password":req.body.password};
-  var test = signupinfo.find(query, function (err, docs) {
-        if (err) {
-          console.error(err);
-          throw err;
-        } else {
-          if(docs[0] == undefined) {
-            res.send('no data available');
-            req.session.destroy();
-          } else {
-            var session       = req.session;
-            session.userid    = docs[0]._id
-            session.usernname = docs[0].name
-            session.email     = docs[0].email
-            session.userType  = docs[0].type
-            res.redirect('/dashboard')
-          }
-        }
-  });
-  console.log(test);
-});

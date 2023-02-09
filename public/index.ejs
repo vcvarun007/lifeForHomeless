@@ -80,6 +80,18 @@ Version       Name          Date            Description
             <div class="signup-link">
               Not a member? <a href="">Signup now</a>
             </div>
+            <%
+              if(typeof status !== 'undefined' && (status == 500 || status == 200)) {
+            %> 
+            <div class="signup-link" style="
+              color: red;
+              font-size: 30px;
+              margin-top: auto;">
+              <%= message %>
+              </div>
+              <%
+            }
+              %>
           </form>
           <form
             class="signup"
@@ -185,7 +197,7 @@ Version       Name          Date            Description
         </div>
       </div>
     </div>
-
+    
     <script src="../js/signup.js"></script>
   </body>
 </html>
