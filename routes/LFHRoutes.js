@@ -1,13 +1,4 @@
-/************************************************
-Revision History
-
-Version       Name          Date            Description 
-
-1.0         Aman Das      09/02/2023      Testing of all Apis 
-1.0         Navin Raaj    08/02/2023      Connected UpdateFood page with Database
-1.0         Navin Raaj    08/02/2023      Added Socket
-***********************************************/
-
+//libraries
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -17,17 +8,23 @@ const bodyParser = require("body-parser");
 let projectCollection;
 let http = require("http").createServer(app);
 let io = require("socket.io")(http);
+
+//configurations
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 var session = require("express-session");
-const dashboardController = require("../controller/dashboardController");
-const loginController = require("../controller/loginController");
 // Mapping the EJS template engine to ".html" files
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
+
+//controllers
+const dashboardController = require("../controller/dashboardController");
+const loginController = require("../controller/loginController");
+
+//models
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
 const signupinfo = require("../models/Signup");
@@ -44,8 +41,8 @@ app.use(
 );
 app.use("/dashboard", dashboardController);
 app.use("/", loginController);
-//2.0 Socket Connection
 
+//2.0 Socket Connection
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("disconnect", () => {
@@ -56,7 +53,7 @@ io.on("connection", (socket) => {
   }, 1000);
 });
 
-//MongoDB Connection
+//mongoDB connection
 const MongoClient = require("mongodb").MongoClient;
 const uri =
   "mongodb+srv://vcvarun007:vcvarun007@cluster0.zfxgxdf.mongodb.net/LifeForHomeless?retryWrites=true&w=majority";
@@ -79,7 +76,7 @@ const createColllection = (collectionName) => {
   });
 };
 
-//---------- Create HP Profile---------- ---------- ---------- ---------- ----------
+//create HP profile
 app.post("/CreateHPProfile", (req, res) => {
   const newProfile = new HPProfileData({
     fname: req.body.fname,
@@ -98,17 +95,19 @@ app.post("/CreateHPProfile", (req, res) => {
     }
   });
 });
-//---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
+//index
 app.get("/", (req, res) => {
   res.render("../public/index.ejs");
 });
 
+//logout
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
 
+//updateFood
 app.get("/updateFood", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
@@ -118,6 +117,7 @@ app.get("/updateFood", (req, res) => {
   res.render("../public/views/UpdateFood.html", { userType: userType });
 });
 
+//displayFood
 app.get("/displayFoods", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
@@ -132,6 +132,7 @@ app.get("/displayFoods", (req, res) => {
   });
 });
 
+//createHPProfile
 app.get("/CreateHPProfile", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
@@ -142,6 +143,7 @@ app.get("/CreateHPProfile", (req, res) => {
   res.render("../public/views/CreateHPProfile.html", { userType: userType });
 });
 
+//restaurantAvailabilityCheck
 app.get("/restaurants", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
@@ -157,17 +159,13 @@ app.get("/restaurants", (req, res) => {
   });
 });
 
+//server listen config
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
   createColllection("createHPProfile");
 });
 
-/*********************************************************** //1.0
-Author              :Navin Raaj M
-Last Modified Date  :08-02-2023
-Description         :The Below code is used to get the input data from the UI and send it to the server
-**********************************************************/
-
+//updateFood
 app.post("/updateFood", (req, res) => {
   const UpdateFood = new UpdateFoodData({
     name: req.body.name,
@@ -188,13 +186,7 @@ app.post("/updateFood", (req, res) => {
   });
 });
 
-/********************************************
-
-Version       Name          Date            Description 
-1.0         Aman Das    07/02/2023            Testing
-
-*********************************************/
-
+//testing
 app.get("/restaurants/:test1", function (req, res, next) {
   var test1 = parseInt(req.params.test1);
   var check = test1 || null;
