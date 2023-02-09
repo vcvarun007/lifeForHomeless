@@ -76,9 +76,7 @@ app.post("/views/CreateHPProfile.html", (req, res) => {
     if (error) {
       res.status(500).send(error);
     } else {
-      // res.send(profileData);
       console.log(profileData);
-      // res.send("Profile Created!");
       res.redirect("../views/CreateHPProfile.html");
     }
   });

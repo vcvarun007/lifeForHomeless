@@ -1,0 +1,52 @@
+/* Add a background image to the page */
+body {
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+  }
+
+  /* Center the table on the page */
+  .table-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Add some padding and border to the table */
+  .table-container table {
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Add some animations to the table */
+  .table-container table {
+    animation: fadeIn 1s ease-in-out;
+  }
+  .table-container th {
+    animation: fadeInLeft 1s ease-in-out;
+  }
+  .table-container td {
+    animation: fadeInRight 1s ease-in-out;
+  }
+
+  /* Make the table responsive */
+  @media (max-width: 768px) {
+    .table-container {
+      width: 90%;
+    }
+  }
+
+  /* Define the animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(10px);
+    }}
