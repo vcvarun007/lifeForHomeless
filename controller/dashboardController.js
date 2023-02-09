@@ -3,6 +3,7 @@ const router = express.Router();
 var session = require('express-session');
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel"); 
+const signupinfo = require("../models/Signup")
 
 // Define a dashboard page route
 router.get('/view', (req, res) => {
@@ -10,7 +11,15 @@ router.get('/view', (req, res) => {
       res.redirect('/')
       return true;
     }
-    res.render("../public/views/Dashboard.ejs");
+    var userId = req.session.userid;
+    var query = {
+      email: 'dasaman5844@gmail.com'
+    };
+    var data = signupinfo.countDocuments(query, function(err, count) {
+      console.log("Number of documents in the collection: " + count);
+    })
+
+    res.render("../public/views/Dashboard.ejs",{data: data});
   })
 
 module.exports = router;
