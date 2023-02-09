@@ -20,3 +20,9 @@
           width: 90%;
         }
       }
+      
+      body {
+        background-image: url(https://www.gannett-cdn.com/-mm-/9d3ec0beddc2faa2b0492aaea7499a143ff9a8d0/c=0-258-5077-3126/local/-/media/2018/07/18/NJGroup/AsburyPark/636675260687536083-GettyImages-856576006.jpg);
+        background-size: cover;
+      }
+	  
