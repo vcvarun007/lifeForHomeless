@@ -1,21 +1,6 @@
-<!--**************************************************************************
-Revision History
-Version       Name              Date            Description 
-1.0           Varun Chaudhary   19/01/2023      Initial
-1.1           Varun Chaudhary   25/01/2023      Updated the new links
-***************************************************************************-->
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg==" crossorigin="anonymous" />
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-    crossorigin="anonymous"
-  /> -->
-
     <!-- BOOTSTRAP -->
     <link
       rel="stylesheet"
@@ -74,6 +59,14 @@ Version       Name              Date            Description
             <td>Chicago</td>
           </tr> -->
         </tbody>
+      </table>
+      <table>
+        <% for(var key in foodData) { %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= foodData[key] %></td>
+        </tr>
+        <% } %>
       </table>
     </div>
   </body>

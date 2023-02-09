@@ -22,26 +22,28 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-var session = require('express-session');
-const dashboardController = require('../controller/dashboardController');
-const loginController = require('../controller/loginController');
+var session = require("express-session");
+const dashboardController = require("../controller/dashboardController");
+const loginController = require("../controller/loginController");
 // Mapping the EJS template engine to ".html" files
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "ejs");
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
-const signupinfo = require("../models/Signup")
-const logininfo = require("../models/Signup")
+const signupinfo = require("../models/Signup");
+const logininfo = require("../models/Signup");
 
 const oneDay = 1000 * 60 * 60 * 24;
-app.use(session({
-  secret: "LFHPROJECT",
-  saveUninitialized:true,
-  cookie: { maxAge: oneDay },
-  resave: false
-}));
-app.use('/dashboard', dashboardController);
-app.use('/',loginController)
+app.use(
+  session({
+    secret: "LFHPROJECT",
+    saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false,
+  })
+);
+app.use("/dashboard", dashboardController);
+app.use("/", loginController);
 //2.0 Socket Connection
 
 io.on("connection", (socket) => {
@@ -98,58 +100,85 @@ app.post("/CreateHPProfile", (req, res) => {
 });
 //---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.render("../public/index.ejs");
-})
+});
 
-app.get('/logout', (req, res) => {
+app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect('/')
-})
+  res.redirect("/");
+});
 
-
-
-app.get('/updateFood', (req, res) => {
-  if(req.session.userid == undefined) {
-    res.redirect('/')
+app.get("/updateFood", (req, res) => {
+  if (req.session.userid == undefined) {
+    res.redirect("/");
     return true;
   }
+<<<<<<< Updated upstream
   var userType = req.session.userType;
   res.render("../public/views/UpdateFood.html",{userType: userType});
 })
+=======
+  res.render("../public/views/UpdateFood.html");
+});
+>>>>>>> Stashed changes
 
-app.get('/displayFoods', (req, res) => {
-  if(req.session.userid == undefined) {
-    res.redirect('/')
+app.get("/displayFoods", (req, res) => {
+  if (req.session.userid == undefined) {
+    res.redirect("/");
     return true;
   }
+<<<<<<< Updated upstream
   var userType = req.session.userType;
   UpdateFoodData.find({}, function(err, updatefooddatas) {
   res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas,userType: userType})
 })
+=======
 
-})
+  UpdateFoodData.find({}, function (err, updatefooddatas) {
+    res.render("../public/views/Displayfoods.ejs", {
+      Fooddata: updatefooddatas,
+    });
+  });
+});
+>>>>>>> Stashed changes
 
-app.get('/CreateHPProfile', (req, res) => {
-  if(req.session.userid == undefined) {
-    res.redirect('/')
+app.get("/CreateHPProfile", (req, res) => {
+  if (req.session.userid == undefined) {
+    res.redirect("/");
     return true;
   }
+<<<<<<< Updated upstream
   var userType = req.session.userType;
 
   res.render("../public/views/CreateHPProfile.html",{userType: userType});
 })
+=======
+  res.render("../public/views/CreateHPProfile.html");
+});
+>>>>>>> Stashed changes
 
-app.get('/restaurants', (req, res) => {
-  if(req.session.userid == undefined) {
-    res.redirect('/')
+app.get("/restaurants", (req, res) => {
+  if (req.session.userid == undefined) {
+    res.redirect("/");
     return true;
   }
+<<<<<<< Updated upstream
   var userType = req.session.userType;
 
   res.render("../public/views/RestaurantAvailabilityCheck.html",{userType: userType});
 })
 
+=======
+  UpdateFoodData.find({}, function (err, foodData) {
+    res.render("../public/views/RestaurantAvailabilityCheck.ejs", {
+      foodData: foodData,
+    });
+    console.log("--------------" + foodData);
+  });
+  // res.render("../public/views/RestaurantAvailabilityCheck.html");
+});
+>>>>>>> Stashed changes
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -181,6 +210,7 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
+<<<<<<< Updated upstream
 
 /********************************************
 
@@ -242,3 +272,5 @@ app.get('/logout/:test5', function(req,res,next){
   else { res.json({check: check, statusCode: 200}).status(200) } 
 })
 
+=======
+>>>>>>> Stashed changes
