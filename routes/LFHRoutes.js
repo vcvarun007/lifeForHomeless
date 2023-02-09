@@ -114,71 +114,48 @@ app.get("/updateFood", (req, res) => {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
-  res.render("../public/views/UpdateFood.html",{userType: userType});
-})
-=======
-  res.render("../public/views/UpdateFood.html");
+  res.render("../public/views/UpdateFood.html", { userType: userType });
 });
->>>>>>> Stashed changes
 
 app.get("/displayFoods", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
-  UpdateFoodData.find({}, function(err, updatefooddatas) {
-  res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas,userType: userType})
-})
-=======
-
   UpdateFoodData.find({}, function (err, updatefooddatas) {
     res.render("../public/views/Displayfoods.ejs", {
       Fooddata: updatefooddatas,
+      userType: userType,
     });
   });
 });
->>>>>>> Stashed changes
 
 app.get("/CreateHPProfile", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
 
-  res.render("../public/views/CreateHPProfile.html",{userType: userType});
-})
-=======
-  res.render("../public/views/CreateHPProfile.html");
+  res.render("../public/views/CreateHPProfile.html", { userType: userType });
 });
->>>>>>> Stashed changes
 
 app.get("/restaurants", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
 
-  res.render("../public/views/RestaurantAvailabilityCheck.html",{userType: userType});
-})
-
-=======
   UpdateFoodData.find({}, function (err, foodData) {
     res.render("../public/views/RestaurantAvailabilityCheck.ejs", {
       foodData: foodData,
+      userType: userType,
     });
-    console.log("--------------" + foodData);
   });
-  // res.render("../public/views/RestaurantAvailabilityCheck.html");
 });
->>>>>>> Stashed changes
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -210,7 +187,6 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
-<<<<<<< Updated upstream
 
 /********************************************
 
@@ -219,58 +195,61 @@ Version       Name          Date            Description
 
 *********************************************/
 
-app.get('/restaurants/:test1', function(req,res,next){
-  var test1 = parseInt(req.params.test1)  
-  var check = test1 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+app.get("/restaurants/:test1", function (req, res, next) {
+  var test1 = parseInt(req.params.test1);
+  var check = test1 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
+});
 
-app.get('/CreateHPProfile/:test2', function(req,res,next){
-  var test2 = parseInt(req.params.test2)  
-  var check = test2 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+app.get("/CreateHPProfile/:test2", function (req, res, next) {
+  var test2 = parseInt(req.params.test2);
+  var check = test2 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
-app.get('/displayFoods/:test3', function(req,res,next){
-  var test3 = parseInt(req.params.test3)  
-  var check = test3 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+});
+app.get("/displayFoods/:test3", function (req, res, next) {
+  var test3 = parseInt(req.params.test3);
+  var check = test3 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
+});
 
-app.get('/displayFoods/:test3', function(req,res,next){
-  var test3 = parseInt(req.params.test3)  
-  var check = test3 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+app.get("/displayFoods/:test3", function (req, res, next) {
+  var test3 = parseInt(req.params.test3);
+  var check = test3 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
+});
 
-app.get('/dashboard/:test4', function(req,res,next){
-  var test4 = parseInt(req.params.test4)  
-  var check = test4 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+app.get("/dashboard/:test4", function (req, res, next) {
+  var test4 = parseInt(req.params.test4);
+  var check = test4 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
+});
 
-app.get('/logout/:test5', function(req,res,next){
-  var test5 = parseInt(req.params.test5)  
-  var check = test5 || null
-  if(check == null) {
-    res.json({check: check, statusCode: 400}).status(400)
+app.get("/logout/:test5", function (req, res, next) {
+  var test5 = parseInt(req.params.test5);
+  var check = test5 || null;
+  if (check == null) {
+    res.json({ check: check, statusCode: 400 }).status(400);
+  } else {
+    res.json({ check: check, statusCode: 200 }).status(200);
   }
-  else { res.json({check: check, statusCode: 200}).status(200) } 
-})
-
-=======
->>>>>>> Stashed changes
+});

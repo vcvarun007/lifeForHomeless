@@ -25,10 +25,9 @@
   <body>
     <%- include('./common/nav') %>
     <div class="container">
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="restCheckTable">
         <thead>
           <tr>
-            <th>S. No.</th>
             <th>Feed Quantity</th>
             <th>Food Choice</th>
             <th>Point of Contact (P.O.C.)</th>
@@ -37,36 +36,15 @@
         </thead>
         <tbody>
           <div id="foodTable"></div>
-          <!-- <tr>
-            <td>1</td>
-            <td>200</td>
-            <td>Vegetarian</td>
-            <td>John Doe</td>
-            <td>New York</td>
-          </tr>
+          <% foodData.forEach(function(item) { %>
           <tr>
-            <td>2</td>
-            <td>150</td>
-            <td>Non-Vegetarian</td>
-            <td>Jane Smith</td>
-            <td>Los Angeles</td>
+            <td><%= item.Quantity %></td>
+            <td><%= item.type %></td>
+            <td><%= item.name %></td>
+            <td><%= item.Location %></td>
           </tr>
-          <tr>
-            <td>3</td>
-            <td>250</td>
-            <td>Vegan</td>
-            <td>Mike Johnson</td>
-            <td>Chicago</td>
-          </tr> -->
+          <% });%>
         </tbody>
-      </table>
-      <table>
-        <% for(var key in foodData) { %>
-        <tr>
-          <td><%= key %></td>
-          <td><%= foodData[key] %></td>
-        </tr>
-        <% } %>
       </table>
     </div>
   </body>

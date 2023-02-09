@@ -1,6 +1,6 @@
 /* Add a background image to the page */
 body {
-    background-image: url("../images/bg.jpg");
+    background-image: url("../images/FoodDonation.jpeg");
     background-size: cover;
   }
 
@@ -15,8 +15,8 @@ body {
   /* Add some padding and border to the table */
   .table-container table {
     padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 1rem;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 1rem; */
     background-color: rgba(255, 255, 255, 0.8);
   }
 
@@ -31,6 +31,21 @@ body {
     animation: fadeInRight 1s ease-in-out;
   }
 
+  #restCheckTable {
+    color: darkslategrey;
+    background-color: rgba(255, 255, 255, 0.7 );
+    margin-top: 20px;
+    padding: 10px;
+  }
+  th {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: rgb(54, 69, 79, 0.2);
+  }
   /* Make the table responsive */
   @media (max-width: 768px) {
     .table-container {
