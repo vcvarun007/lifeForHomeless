@@ -3,7 +3,7 @@ Revision History
 
 Version       Name          Date            Description 
 
-
+1.0         Aman Das      09/02/2023      Testing of all Apis 
 1.0         Navin Raaj    08/02/2023      Connected UpdateFood page with Database
 1.0         Navin Raaj    08/02/2023      Added Socket
 ***********************************************/
@@ -182,5 +182,63 @@ app.post("/updateFood", (req, res) => {
   });
 });
 
+/********************************************
 
+Version       Name          Date            Description 
+1.0         Aman Das    07/02/2023            Testing
+
+*********************************************/
+
+app.get('/restaurants/:test1', function(req,res,next){
+  var test1 = parseInt(req.params.test1)  
+  var check = test1 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
+
+app.get('/CreateHPProfile/:test2', function(req,res,next){
+  var test2 = parseInt(req.params.test2)  
+  var check = test2 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
+app.get('/displayFoods/:test3', function(req,res,next){
+  var test3 = parseInt(req.params.test3)  
+  var check = test3 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
+
+app.get('/displayFoods/:test3', function(req,res,next){
+  var test3 = parseInt(req.params.test3)  
+  var check = test3 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
+
+app.get('/dashboard/:test4', function(req,res,next){
+  var test4 = parseInt(req.params.test4)  
+  var check = test4 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
+
+app.get('/logout/:test5', function(req,res,next){
+  var test5 = parseInt(req.params.test5)  
+  var check = test5 || null
+  if(check == null) {
+    res.json({check: check, statusCode: 400}).status(400)
+  }
+  else { res.json({check: check, statusCode: 200}).status(200) } 
+})
 

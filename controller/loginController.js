@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 var session = require('express-session');
+
 const signupinfo = require("../models/Signup")
 
 
+
 /***********************************************************
-Author              :
+Author              : Aman Das
 Last Modified Date  :-02-2023
-Description         :
+Description         : signup inserting data
 **********************************************************/
 
 router.post("/signupUser", (req, res) => {
