@@ -14,6 +14,7 @@ const UpdateFoodSchema = new Schema({
     type: "String",
     Quantity: "Number",
     Location: "String",
+    UserID: "String",
   });
   
 const UpdateFoodData = mongoose.model("UpdateFoodData",UpdateFoodSchema);

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg=="
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+  />
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/dashboard/view">Life for Homeless</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard/view">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../displayFoods">
+            <i class="fas fa-utensils"></i> Food Availability
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/CreateHPProfile">
+            <i class="fas fa-user-plus"></i> Create HP Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/restaurants"
+          >
+            <i class="fas fa-check-square"></i> Restaurant Availability Check
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <i class="fas fa-sign-in-alt"></i>Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Food Type</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Location</th>
+            <th scope="col">UserID</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%Fooddata.forEach(UpdateFoodData => {%>
+            <tr>
+                <th scope="row"><%= UpdateFoodData._id %></th>
+                <td><%= UpdateFoodData.name %></td>
+                <td><%= UpdateFoodData.contact %></td>
+                <td><%= UpdateFoodData.type %></td>
+                <td><%= UpdateFoodData.Quantity %></td>
+                <td><%= UpdateFoodData.Location %></td>
+                <td><%= UpdateFoodData.UserID %></td>
+
+            </tr>
+        <%})%>
+        </tbody>
+      </table>
+</body>
+</html>
