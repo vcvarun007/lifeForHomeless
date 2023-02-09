@@ -15,6 +15,26 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <a class="nav-link">
+            <i class="fas fa-user"></i>
+            <% 
+              let restaurantName;
+              switch (userType) {
+                case 1:
+                  restaurantName = "Donor";
+                  break;
+                case 2:
+                  restaurantName = "Volunteer";
+                  break;
+                case 3:
+                  restaurantName = "Restaurant";
+                  break;
+              }
+            %>
+            <%= restaurantName %>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/dashboard/view">
             <i class="fas fa-tachometer-alt"></i> Dashboard
           </a>
@@ -46,7 +66,7 @@
             <i class="fas fa-check-square"></i> Restaurant Availability Check
           </a>
         </li>
-        <%}%>
+        <%}%>      
         <li class="nav-item">
           <a class="nav-link" href="/logout">
             <i class="fas fa-sign-in-alt"></i>Log Out</a>

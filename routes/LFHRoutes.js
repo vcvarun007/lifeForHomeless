@@ -114,71 +114,42 @@ app.get("/updateFood", (req, res) => {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
   res.render("../public/views/UpdateFood.html",{userType: userType});
 })
-=======
-  res.render("../public/views/UpdateFood.html");
-});
->>>>>>> Stashed changes
 
 app.get("/displayFoods", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
   UpdateFoodData.find({}, function(err, updatefooddatas) {
   res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas,userType: userType})
 })
-=======
+})
 
-  UpdateFoodData.find({}, function (err, updatefooddatas) {
-    res.render("../public/views/Displayfoods.ejs", {
-      Fooddata: updatefooddatas,
-    });
-  });
-});
->>>>>>> Stashed changes
 
 app.get("/CreateHPProfile", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
 
   res.render("../public/views/CreateHPProfile.html",{userType: userType});
 })
-=======
-  res.render("../public/views/CreateHPProfile.html");
-});
->>>>>>> Stashed changes
 
 app.get("/restaurants", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");
     return true;
   }
-<<<<<<< Updated upstream
   var userType = req.session.userType;
 
   res.render("../public/views/RestaurantAvailabilityCheck.html",{userType: userType});
 })
 
-=======
-  UpdateFoodData.find({}, function (err, foodData) {
-    res.render("../public/views/RestaurantAvailabilityCheck.ejs", {
-      foodData: foodData,
-    });
-    console.log("--------------" + foodData);
-  });
-  // res.render("../public/views/RestaurantAvailabilityCheck.html");
-});
->>>>>>> Stashed changes
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -210,7 +181,6 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
-<<<<<<< Updated upstream
 
 /********************************************
 
@@ -271,6 +241,3 @@ app.get('/logout/:test5', function(req,res,next){
   }
   else { res.json({check: check, statusCode: 200}).status(200) } 
 })
-
-=======
->>>>>>> Stashed changes
