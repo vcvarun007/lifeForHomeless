@@ -114,7 +114,8 @@ app.get('/updateFood', (req, res) => {
     res.redirect('/')
     return true;
   }
-  res.render("../public/views/UpdateFood.html");
+  var userType = req.session.userType;
+  res.render("../public/views/UpdateFood.html",{userType: userType});
 })
 
 app.get('/displayFoods', (req, res) => {
@@ -122,10 +123,9 @@ app.get('/displayFoods', (req, res) => {
     res.redirect('/')
     return true;
   }
-
+  var userType = req.session.userType;
   UpdateFoodData.find({}, function(err, updatefooddatas) {
-    res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas
-    })
+  res.render("../public/views/Displayfoods.ejs", {Fooddata: updatefooddatas,userType: userType})
 })
 
 })
@@ -135,7 +135,9 @@ app.get('/CreateHPProfile', (req, res) => {
     res.redirect('/')
     return true;
   }
-  res.render("../public/views/CreateHPProfile.html");
+  var userType = req.session.userType;
+
+  res.render("../public/views/CreateHPProfile.html",{userType: userType});
 })
 
 app.get('/restaurants', (req, res) => {
@@ -143,7 +145,9 @@ app.get('/restaurants', (req, res) => {
     res.redirect('/')
     return true;
   }
-  res.render("../public/views/RestaurantAvailabilityCheck.html");
+  var userType = req.session.userType;
+
+  res.render("../public/views/RestaurantAvailabilityCheck.html",{userType: userType});
 })
 
 

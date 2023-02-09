@@ -12,14 +12,15 @@ router.get('/view', (req, res) => {
       return true;
     }
     var userId = req.session.userid;
-    var query = {
-      email: 'dasaman5844@gmail.com'
-    };
-    var data = signupinfo.countDocuments(query, function(err, count) {
-      console.log("Number of documents in the collection: " + count);
-    })
+    var userType = req.session.userType;
+    // var query = {
+    //   userid: userId
+    // };
+    // var data = HPProfileData.countDocuments(query, function(err, count) {
+    //   console.log("Number of documents in the collection: " + count);
+    // })
 
-    res.render("../public/views/Dashboard.ejs",{data: data});
+    res.render("../public/views/Dashboard.ejs",{userType: userType});
   })
 
 module.exports = router;

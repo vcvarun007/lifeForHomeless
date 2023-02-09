@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/dashboard/view">Life for Homeless</a>
+    <a class="navbar-brand" href="/dashboard/view">Life for Homeless </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -9,6 +9,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
+   
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -18,11 +19,20 @@
             <i class="fas fa-tachometer-alt"></i> Dashboard
           </a>
         </li>
+        <%if (userType != 3) {%>
+        <li class="nav-item">
+          <a class="nav-link" href="/updateFood">
+            <i class="fas fa-utensils"></i> Update Food
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/displayFoods">
             <i class="fas fa-utensils"></i> Food Availability
           </a>
         </li>
+        <%}%>
+
+        <%if (userType == 3) {%>
         <li class="nav-item">
           <a class="nav-link" href="/CreateHPProfile">
             <i class="fas fa-user-plus"></i> Create HP Profile
@@ -36,6 +46,7 @@
             <i class="fas fa-check-square"></i> Restaurant Availability Check
           </a>
         </li>
+        <%}%>
         <li class="nav-item">
           <a class="nav-link" href="/logout">
             <i class="fas fa-sign-in-alt"></i>Log Out</a>
