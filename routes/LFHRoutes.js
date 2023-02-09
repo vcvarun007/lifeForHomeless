@@ -75,7 +75,7 @@ const createColllection = (collectionName) => {
 };
 
 //---------- Create HP Profile---------- ---------- ---------- ---------- ----------
-app.post("/views/CreateHPProfile.html", (req, res) => {
+app.post("/CreateHPProfile", (req, res) => {
   const newProfile = new HPProfileData({
     fname: req.body.fname,
     lname: req.body.lname,
@@ -89,15 +89,25 @@ app.post("/views/CreateHPProfile.html", (req, res) => {
       res.status(500).send(error);
     } else {
       console.log(profileData);
-      res.redirect("../views/CreateHPProfile.html");
+      res.redirect("/CreateHPProfile");
     }
   });
 });
 //---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
-app.get("/", (req, res) => {
-  res.render("../public/index.html");
-});
+// app.get("/", (req, res) => {
+//   res.render("../public/index.html");
+// });
+
+
+app.get('/', (req, res) => {
+  res.render("../public/views/signup.html");
+})
+
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/')
+})
 
 app.get('/dashboard', (req, res) => {
   res.render("../public/views/Dashboard.html");
@@ -106,6 +116,19 @@ app.get('/dashboard', (req, res) => {
 app.get('/updateFood', (req, res) => {
   res.render("../public/views/UpdateFood.html");
 })
+
+app.get('/displayFoods', (req, res) => {
+  res.render("../public/views/Displayfoods.html");
+})
+
+app.get('/CreateHPProfile', (req, res) => {
+  res.render("../public/views/CreateHPProfile.html");
+})
+
+app.get('/restaurants', (req, res) => {
+  res.render("../public/views/RestaurantAvailabilityCheck.html");
+})
+
 
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
@@ -118,7 +141,7 @@ Last Modified Date  :08-02-2023
 Description         :The Below code is used to get the input data from the UI and send it to the server
 **********************************************************/
 
-app.post("/views/UpdateFood.html", (req, res) => {
+app.post("/updateFood", (req, res) => {
   const UpdateFood = new UpdateFoodData({
     name: req.body.name,
     contact: req.body.contact,
