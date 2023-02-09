@@ -101,6 +101,7 @@ function validatelogin(){
 var password=document.forms.loginform.password.value;  
 
 var email=document.forms.loginform.email.value; 
+console.log(password, email);
 var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
 if (email == "" || !regEmail.test(email)) {

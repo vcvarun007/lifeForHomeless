@@ -22,11 +22,22 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+var session = require('express-session');
+// Mapping the EJS template engine to ".html" files
+app.engine('html', require('ejs').renderFile);
+
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel"); //1.0
 const signupinfo = require("../models/Signup")
 const logininfo = require("../models/Signup")
 
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(session({
+  secret: "LFHPROJECT",
+  saveUninitialized:true,
+  cookie: { maxAge: oneDay },
+  resave: false
+}));
 
 //2.0 Socket Connection
 
@@ -90,6 +101,14 @@ app.get("/", (req, res) => {
   res.render("../public/index.html");
 });
 
+app.get('/dashboard', (req, res) => {
+  res.render("../public/views/Dashboard.html");
+})
+
+app.get('/updateFood', (req, res) => {
+  res.render("../public/views/UpdateFood.html");
+})
+
 http.listen(port, () => {
   console.log(`Listening on port ${port}`);
   createColllection("createHPProfile");
@@ -139,37 +158,40 @@ app.post("/views/signup.html", (req, res) => {
     type: req.body.type,
     rname: req.body.rname,
   });
-
   details.save((error, signuppage) => {
     if (error) {
       res.status(500).send(error);
     } else {
       console.log(signuppage);
-      res.send("successfully submitted");
- 
+      res.send("successfully submitted signup");
     }
   });
 });
 
 /***********************************************************
-Author              :
+Author              : jaskirat singh
 Last Modified Date  :-02-2023
-Description         :
+Description         : login code 
 **********************************************************/
 
-app.post("/views/signup.html", (req, res) => {
-  const details = new logininfo({
-    name: req.body.name,
-    email: req.body.email,
+app.post('/login',(req,res) => {
+  var query = {"email":req.body.email,"password":req.body.password};
+  var test = signupinfo.find(query, function (err, docs) {
+        if (err) {
+          console.error(err);
+          throw err;
+        } else {
+          if(docs[0] == undefined) {
+            res.send('no data available');
+            req.session.destroy();
+          } else {
+            var session       = req.session;
+            session.userid    = docs[0]._id
+            session.usernname = docs[0].name
+            session.email     = docs[0].email
+            res.redirect('/dashboard')
+          }
+        }
   });
-
-  details.save((error, loginpage) => {
-    if (error) {
-      res.status(500).send(error);
-    } else {
-      console.log(loginpage);
-      res.send("successfully submitted");
-     
-    }
-  });
+  console.log(test);
 });
