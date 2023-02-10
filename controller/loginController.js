@@ -1,14 +1,15 @@
+
+//libraries
 const express = require('express');
 const router = express.Router();
 var session = require('express-session');
 
+//models
 const signupinfo = require("../models/Signup")
-
-
 
 /***********************************************************
 Author              : Aman Das
-Last Modified Date  :-02-2023
+Last Modified Date  : 09-02-2023
 Description         : signup inserting data
 **********************************************************/
 
@@ -34,7 +35,7 @@ router.post("/signupUser", (req, res) => {
   
 /***********************************************************
 Author              : jaskirat singh
-Last Modified Date  :-02-2023
+Last Modified Date  : 09-02-2023
 Description         : login code 
 **********************************************************/
 

@@ -1,9 +1,21 @@
+
+//libraries
 const express = require("express");
 const router = express.Router();
 var session = require("express-session");
+
+//models
 const HPProfileData = require("../models/CreateHPProfileModel");
 const UpdateFoodData = require("../models/UpdateFoodModel");
 const signupinfo = require("../models/Signup");
+
+
+
+/***********************************************************
+Author              : jaskirat singh
+Last Modified Date  : 09-02-2023
+Description         : Dashboard code 
+**********************************************************/
 
 // Define a dashboard page route
 router.get("/view", (req, res) => {
