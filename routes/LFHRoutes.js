@@ -79,6 +79,7 @@ const createColllection = (collectionName) => {
 //create HP profile
 app.post("/CreateHPProfile", (req, res) => {
   const newProfile = new HPProfileData({
+    vol_id: req.session.userid,
     fname: req.body.fname,
     lname: req.body.lname,
     age: req.body.age,
@@ -132,7 +133,7 @@ app.get("/displayFoods", (req, res) => {
   });
 });
 
-//createHPProfile
+//getHPProfile
 app.get("/CreateHPProfile", (req, res) => {
   if (req.session.userid == undefined) {
     res.redirect("/");

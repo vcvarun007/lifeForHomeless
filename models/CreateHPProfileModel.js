@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const HPProfileSchema = new Schema({
-  hpp_id: "ObjectId",
+  // hpp_id: "ObjectId",
+  vol_id: "ObjectId",
   fname: "String",
   lname: "String",
   age: "Number",

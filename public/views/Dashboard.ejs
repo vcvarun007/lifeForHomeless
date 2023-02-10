@@ -5,17 +5,28 @@
   <head>
     <!-- Bootstrap CSS library -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
 
     <!-- animate.css library -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg==" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-5hEcn7kqVtYmDc6jHgT9LzRZ/JPDLwGm1V7KyK/fLh3YgDtMbXoKG/ZLQn7+QzZO1p1hDzsv26++/YVXpYxpwg=="
+      crossorigin="anonymous"
+    />
 
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"/>
-    
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    />
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -51,10 +62,9 @@
           </li>
           <li class="breadcrumb-item active">My Dashboard</li>
         </ol>
-        <!-- Icon Cards-->
-        <div class="row">
-
+        <!-- Icon Cards and Table-->
         <%if (userType != 1 && userType != 2) {%>
+        <div class="row">
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
@@ -71,25 +81,72 @@
               </a>
             </div>
           </div>
-        <%}%>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fa fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">123 Food Donated!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fa fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-         
         </div>
+        <div class="container">
+          <table class="table table-bordered" id="restCheckTable">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Document</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div id="foodTable"></div>
+              <% profileData.forEach(function(profile) { %>
+              <tr>
+                <td><%= profile.fname %></td>
+                <td><%= profile.lname %></td>
+                <td><%= profile.age %></td>
+                <td><%= profile.idProof %></td>
+              </tr>
+              <% });%>
+            </tbody>
+          </table>
+        </div>
+        <%}%> <%if(userType == 1 || userType == 2){%>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-shopping-cart"></i>
+              </div>
+              <div class="mr-5">123 Food Donated!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="container">
+          <table class="table table-bordered" id="restCheckTable">
+            <thead>
+              <tr>
+                <th>Feed Quantity</th>
+                <th>Food Choice</th>
+                <th>Point of Contact (P.O.C.)</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div id="foodTable"></div>
+              <% foodData.forEach(function(item) { %>
+              <tr>
+                <td><%= item.Quantity %></td>
+                <td><%= item.type %></td>
+                <td><%= item.name %></td>
+                <td><%= item.Location %></td>
+              </tr>
+              <% });%>
+            </tbody>
+          </table>
+        </div>
+        <%}%>
       </div>
       <!-- /.container-fluid-->
     </div>
