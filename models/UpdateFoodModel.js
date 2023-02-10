@@ -1,9 +1,8 @@
-/************************************************
-Revision History
-
-Version       Name          Date            Description 
-1.0         Navin Raaj    07/02/2023      Creating Schema for the Database
-***********************************************/
+/*********************************************************** 
+Author              :Navin Raaj M
+Last Modified Date  :07-02-2023
+Description         :Schema for Updatefooddatas database
+**********************************************************/
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;

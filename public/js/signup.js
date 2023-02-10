@@ -1,10 +1,9 @@
-/********************************************
+/************************************************
 Revision History
-
 Version       Name          Date            Description 
-1.0         Aman Das    07/02/2023      
-
-*********************************************/
+1.0         Aman Das      01/02/2023      Backend validation for login/signup page 
+2.0         Navin Raaj    09/02/2023      Included code for Socket connection 
+***********************************************/
 
 
 
@@ -102,6 +101,7 @@ if(password.length<8){
   return false;  
   } 
 }
+
 //connect to the socket​
 
 let socket = io();

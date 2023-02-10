@@ -1,3 +1,13 @@
+<!--********************************************
+Revision History
+
+Version       Name          Date            Description 
+1.0         Navin Raaj    24/01/2023      Created Basic Form
+2.0         Navin Raaj    25/01/2023      Included Nav Bar
+3.0         Navin Raaj    07/02/2023      Displaying data in form of card list from the database
+4.0         Navin Raaj    09/02/2023      Perfrom CURD delete opertaion
+*********************************************-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +29,11 @@
     <title>Food Stock</title>
   </head>
 <body>
+  <!-- Calling Nav bar from Views/Common/nav.ejs -->
   <%- include('./common/nav') %>
   
 <!-- Space -->​
-
+  <!-- Displaying the data from updatefooddatas database in card format with delete option -->
   <div class="card-deck">
     <% Fooddata.forEach(UpdateFoodData => { %>
       <div class="card">
@@ -36,24 +47,11 @@
             Location: <%= UpdateFoodData.Location %><br>
           </p>
           <form action="/delete/<%= UpdateFoodData._id %>" method="post">
-            <button type='submit' class="btn btn-lg">Delete</button>
-            </form>        </div>
+            <button type='submit' class="btn btn-danger">Delete</button>
+            </form> 
+          </div>
       </div>
     <% }); %>
   </div>
-  <!-- Delete Function -->
-  <script>
-    async function deleteFoodData(id) {
-      const res = await fetch(`/foods/delete/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
-      });
-      if (res.ok) {
-        location.reload();
-      } else {
-        alert("Failed to delete data");
-      }
-    }
-  </script>
 </body>
 </html>

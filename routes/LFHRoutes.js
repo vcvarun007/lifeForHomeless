@@ -1,3 +1,14 @@
+/************************************************
+Revision History
+Version       Name          Date            Description 
+1.0         Navin Raaj    08/02/2023      Connected UpdateFood page with Database
+2.0         Navin Raaj    08/02/2023      Added Socket
+3.0         Aman Das      09/02/2023      Testing of all Apis 
+4.0         Navin Raaj    09/02/2023      Implemented Delete action 
+5.0         Navin Raaj    09/02/2023      Implemented Socket action 
+6.0         Jaskirat      09/02/2023      Implemented render action  
+***********************************************/
+
 //libraries
 const express = require("express");
 const app = express();
@@ -6,8 +17,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 let projectCollection;
-let http = require("http").createServer(app);
-let io = require("socket.io")(http);
+let http = require("http").createServer(app);//5.0
+let io = require("socket.io")(http);  //5.0
 
 //configurations
 app.use(express.static("public"));
@@ -15,10 +26,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-var session = require("express-session");
+var session = require("express-session"); //6.0
 // Mapping the EJS template engine to ".html" files
-app.engine("html", require("ejs").renderFile);
-app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile); //6.0
+app.set("view engine", "ejs"); //6.0
 
 //controllers
 const dashboardController = require("../controller/dashboardController");
@@ -42,7 +53,14 @@ app.use(
 app.use("/dashboard", dashboardController);
 app.use("/", loginController);
 
-//Socket Connection
+
+/*********************************************************** //5.0
+Author              :Navin Raaj M
+Last Modified Date  :09-02-2023
+Description         :Implement Basic Socket connection
+**********************************************************/
+
+//-----------------START----------------------------------//
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("disconnect", () => {
@@ -53,6 +71,9 @@ io.on("connection", (socket) => {
   }, 1000);
 });
 
+//-----------------END----------------------------------//
+
+
 //mongoDB connection
 const MongoClient = require("mongodb").MongoClient;
 const uri =
@@ -62,6 +83,8 @@ mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+
 
 //create collection
 const createColllection = (collectionName) => {
@@ -96,6 +119,15 @@ app.post("/CreateHPProfile", (req, res) => {
   });
 });
 
+
+
+/*********************************************************** //6.0
+Author              :Jaskirat
+Last Modified Date  :09-02-2023
+Description         :Implemented render action  
+**********************************************************/
+
+//-----------------START----------------------------------//
 //index
 app.get("/", (req, res) => {
   res.render("../public/index.ejs");
@@ -158,6 +190,7 @@ app.get("/restaurants", (req, res) => {
     });
   });
 });
+//-----------------Stop----------------------------------//
 
 //server listen config
 http.listen(port, () => {
@@ -165,7 +198,13 @@ http.listen(port, () => {
   createColllection("createHPProfile");
 });
 
-//updateFood
+
+/*********************************************************** //1.0
+Author              :Navin Raaj M
+Last Modified Date  :08-02-2023
+Description         :The Below code is used to get the input data from the UI and send it to the server
+**********************************************************/
+//-----------------START----------------------------------//
 app.post("/updateFood", (req, res) => {
   const UpdateFood = new UpdateFoodData({
     name: req.body.name,
@@ -185,10 +224,33 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
+
+//-----------------END----------------------------------//
+
+
+/*********************************************************** //4.0
+Author              :Navin Raaj M
+Last Modified Date  :09-02-2023
+Description         :The Below code is used to delete the select food item fron the database
+**********************************************************/
+//-----------------START----------------------------------//
+
 app.post('/delete/:id', async (req, res) => {
   await UpdateFoodData.deleteOne({_id: req.params.id})
-  return res.redirect('/')
+  return res.redirect('/displayfoods')
 });
+
+//-----------------END----------------------------------//
+
+
+
+
+/*********************************************************** //3.0
+Author              :Aman Das 
+Last Modified Date  :09-02-2023
+Description         :Unit Testing
+**********************************************************/
+//-----------------START----------------------------------//
 
 //testing
 app.get("/restaurants/:test1", function (req, res, next) {
@@ -249,3 +311,5 @@ app.get("/logout/:test5", function (req, res, next) {
     res.json({ check: check, statusCode: 200 }).status(200);
   }
 });
+
+//-----------------END----------------------------------//
