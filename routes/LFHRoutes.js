@@ -185,6 +185,10 @@ app.post("/updateFood", (req, res) => {
     }
   });
 });
+app.post('/delete/:id', async (req, res) => {
+  await UpdateFoodData.deleteOne({_id: req.params.id})
+  return res.redirect('/')
+});
 
 //testing
 app.get("/restaurants/:test1", function (req, res, next) {

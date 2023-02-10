@@ -20,6 +20,9 @@
   </head>
 <body>
   <%- include('./common/nav') %>
+  
+<!-- Space -->​
+
   <div class="card-deck">
     <% Fooddata.forEach(UpdateFoodData => { %>
       <div class="card">
@@ -32,8 +35,9 @@
             Quantity: <%= UpdateFoodData.Quantity %><br>
             Location: <%= UpdateFoodData.Location %><br>
           </p>
-          <button class="btn btn-danger" onclick=deleteFoodData(ID)>Delete</button>
-        </div>
+          <form action="/delete/<%= UpdateFoodData._id %>" method="post">
+            <button type='submit' class="btn btn-lg">Delete</button>
+            </form>        </div>
       </div>
     <% }); %>
   </div>
