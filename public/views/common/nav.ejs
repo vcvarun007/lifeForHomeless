@@ -19,17 +19,17 @@
           <a class="nav-link">
             <i class="fas fa-user"></i>
             <% 
-              let restaurantName;
-              switch (userType) {
-                case 1:
-                  restaurantName = "Donor";
-                  break;
-                case 2:
-                  restaurantName = "Volunteer";
-                  break;
-                case 3:
-                  restaurantName = "Restaurant";
-                  break;
+            let restaurantName;
+            switch (userType) {
+              case 1:
+                restaurantName = "Donor";
+                break;
+              case 2:
+                restaurantName = "Restaurant";
+                break;
+              case 3:
+                restaurantName = "Volunteer";
+                break;
               }
             %>
             <%= restaurantName %>
