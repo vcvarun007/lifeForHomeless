@@ -31,12 +31,25 @@
             Food Type: <%= UpdateFoodData.type %><br>
             Quantity: <%= UpdateFoodData.Quantity %><br>
             Location: <%= UpdateFoodData.Location %><br>
-            UserID: <%= UpdateFoodData.UserID %>
           </p>
-          <button class="btn btn-danger" onclick="deleteFoodData(<%= UpdateFoodData._id %>)">Delete</button>
+          <button class="btn btn-danger" onclick=deleteFoodData(ID)>Delete</button>
         </div>
       </div>
     <% }); %>
   </div>
+  <!-- Delete Function -->
+  <script>
+    async function deleteFoodData(id) {
+      const res = await fetch(`/foods/delete/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+      });
+      if (res.ok) {
+        location.reload();
+      } else {
+        alert("Failed to delete data");
+      }
+    }
+  </script>
 </body>
 </html>

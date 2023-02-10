@@ -42,7 +42,7 @@ app.use(
 app.use("/dashboard", dashboardController);
 app.use("/", loginController);
 
-//2.0 Socket Connection
+//Socket Connection
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("disconnect", () => {
@@ -92,7 +92,6 @@ app.post("/CreateHPProfile", (req, res) => {
       res.status(500).send(error);
     } else {
       console.log(profileData);
-      res.redirect("/CreateHPProfile");
     }
   });
 });
@@ -182,7 +181,7 @@ app.post("/updateFood", (req, res) => {
       res.status(500).send(error);
     } else {
       console.log(nextpage);
-      res.send("successfully submitted");
+      res.redirect("/UpdateFood");
     }
   });
 });
